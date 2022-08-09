@@ -31,10 +31,10 @@ flatpickr('#datetime-picker', options);
 
 btnStart.addEventListener('click', onStartTimer);
 
-let intervalId;
+// let intervalId;
 function onStartTimer() {
 
-  intervalId = setInterval(() => {
+  setInterval(() => {
     const startTime = userDates.getTime();
       // console.log(startTime);
     const deltaTime = startTime - Date.now();

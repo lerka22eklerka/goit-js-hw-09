@@ -20,8 +20,8 @@ const options = {
     userDates = selectedDates[0];
       if (userDates.getTime() < options.defaultDate.getTime()) {
         alert('Please choose a date in the future');
-        //  console.log(userDates.getTime());
         btnStart.disabled = true;
+        return;
       }
       btnStart.disabled = false;
    
@@ -31,10 +31,10 @@ flatpickr('#datetime-picker', options);
 
 btnStart.addEventListener('click', onStartTimer);
 
-// let intervalId;
+
 function onStartTimer() {
 
-  setInterval(() => {
+  const intervalId = setInterval(() => {
     const startTime = userDates.getTime();
       // console.log(startTime);
     const deltaTime = startTime - Date.now();

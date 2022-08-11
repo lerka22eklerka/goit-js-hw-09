@@ -12,7 +12,7 @@ function onSubmit(event) {
   const amount = Number(event.target[2].value);
   for (let i = 1; i <= amount; i += 1) {
     const position = i;
-    console.log(i);
+    // console.log(i);
     delay += step;
   createPromise(position, delay)
   .then(({ position, delay }) => {
@@ -28,7 +28,7 @@ function onSubmit(event) {
 
 
 function createPromise(position, delay) {
-  console.log(position);
+  // console.log(position);
   return new Promise((resolve, reject) => {
     const shouldResolve = Math.random() > 0.3;
     setTimeout(() => {

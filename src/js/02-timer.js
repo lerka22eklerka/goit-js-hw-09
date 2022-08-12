@@ -33,20 +33,30 @@ flatpickr('#datetime-picker', options);
 
 btnStart.addEventListener('click', onStartTimer);
 
+let intervalId;
+let deltaTime;
 
 function onStartTimer() {
-
-  const intervalId = setInterval(() => {
+    intervalId = setInterval(() => {
     const startTime = userDates.getTime();
       // console.log(startTime);
-    const deltaTime = startTime - Date.now();
+    deltaTime = startTime - Date.now();
+      // console.log(deltaTime);
     const timeComponents = convertMs(deltaTime);
     const { days, hours, minutes, seconds } = timeComponents;
     dataDays.textContent = `${days}`;
     dataHours.textContent = `${hours}`;
     dataMinutes.textContent = `${minutes}`;
-    dataSeconds.textContent = `${seconds}`;
+      dataSeconds.textContent = `${seconds}`;
+      onStopTimer(); 
   }, 1000);
+}
+
+function onStopTimer() {
+   if (deltaTime <= 1000 || deltaTime === 0) {
+     btnStart.disabled = true;
+     clearInterval(intervalId);
+   }
 }
 
 function convertMs(ms) {

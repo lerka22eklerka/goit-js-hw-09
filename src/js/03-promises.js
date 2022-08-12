@@ -13,7 +13,6 @@ function onSubmit(event) {
   for (let i = 1; i <= amount; i += 1) {
     const position = i;
     // console.log(i);
-    delay += step;
   createPromise(position, delay)
   .then(({ position, delay }) => {
     Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
@@ -23,6 +22,7 @@ function onSubmit(event) {
     Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
     // console.log(`❌ Rejected promise ${position} in ${delay}ms`);
   }); 
+    delay += step;
   }
 }
 
